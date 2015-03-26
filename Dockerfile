@@ -18,9 +18,15 @@ WORKDIR /usergrid-portal
 #RUN add-apt-repository ppa:fkrull/deadsnakes
 RUN apt-get update
 RUN apt-get install -y python
+RUN apt-get install -y wget curl
+
+
+RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/v0.0.5/ep-linux && chmod +x /usr/local/bin/ep
+
 
 ADD usergrid-portal /usergrid-portal
 
 EXPOSE 3000
 
-CMD python -m SimpleHTTPServer 3000
+ENTRYPOINT ["/usr/local/bin/ep", "/usergrid-portal/config.js", "--", "/usr/bin/python"]
+CMD ["-m", "SimpleHTTPServer", "3000"]

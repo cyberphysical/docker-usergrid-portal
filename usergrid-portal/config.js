@@ -24,7 +24,7 @@ Usergrid.showNotifcations = true;
 
 
 // used only if hostname does not match a real server name
-Usergrid.overrideUrl = 'https://localhost:8080';
+Usergrid.overrideUrl = '${OVERRIDE_URL:-https://localhost:8080}';
 
 Usergrid.options = {
   client:{

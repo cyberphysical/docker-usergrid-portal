@@ -1,0 +1,6 @@
+usergridportal:
+  environment:
+   OVERRIDE_URL: usergrid.dev:8080
+  build: .
+  ports:
+   - "3000:3000"
